@@ -1,0 +1,35 @@
+{
+  "name": "cordova-plugin-um-share-weibo",
+  "version": "1.0.0",
+  "description": "Umeng Share Weibo Suport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yu Chen",
+  "license": "ISC",
+  "cordova": {
+    "id": "cordova-plugin-um-share-weibo",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yccp/cordova-plugin-um-share-weibo.git"
+  },
+  "keywords": [
+    "cordova",
+    "umeng",
+    "weibo",
+    "share",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "bugs": {
+    "url": "https://github.com/yccp/cordova-plugin-um-share-weibo/issues"
+  },
+  "homepage": "https://github.com/yccp/cordova-plugin-um-share-weibo#readme"
+}

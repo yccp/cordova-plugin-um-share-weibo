@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-um-share-weibo" version="1.0.0">
+  <name>UMShareWeibo</name>
+  <description>Cordova Plugin for Umeng Share Weibo Suport</description>
+  <license>ISC</license>
+  <keywords>cordova,umeng,social,share,weibo</keywords>
+  <preference name="UM_SHARE_WEIBO_KEY" />
+  <preference name="UM_SHARE_WEIBO_SECRET" />
+  <platform name="ios">
+    <pod name="UMCShare/Social/ReducedSina" />
+    <config-file target="config.xml" parent="/*">
+      <feature name="UMShareWeibo">
+        <param name="ios-package" value="UMShareWeibo" />
+        <param name="onload" value="true" />
+      </feature>
+      <preference name="UM_SHARE_WEIBO_KEY" value="$UM_SHARE_WEIBO_KEY" />
+      <preference name="UM_SHARE_WEIBO_SECRET" value="$UM_SHARE_WEIBO_SECRET" />
+    </config-file>
+    <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+      <array>
+        <string>sinaweibohd</string>
+        <string>sinaweibo</string>
+        <string>sinaweibosso</string>
+        <string>weibosdk</string>
+        <string>weibosdk2.5</string>
+      </array>
+    </config-file>
+    <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+      <array>
+        <dict>
+          <key>CFBundleURLName</key>
+          <string>weibo</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>wb$UM_SHARE_WEIBO_KEY</string>
+          </array>
+        </dict>
+      </array>
+    </config-file>
+    <header-file src="src/ios/UMShareWeibo.h" />
+    <source-file src="src/ios/UMShareWeibo.m" />
+  </platform>
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="UMShareWeibo">
+        <param name="android-package" value="news.chen.yu.ionic.UMShareWeibo"/>
+        <param name="onload" value="true" />
+      </feature>
+      <preference name="UM_SHARE_WEIBO_KEY" value="$UM_SHARE_WEIBO_KEY" />
+      <preference name="UM_SHARE_WEIBO_SECRET" value="$UM_SHARE_WEIBO_SECRET" />
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <activity android:name="com.umeng.socialize.media.WBShareCallBackActivity" android:configChanges="keyboardHidden|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:exported="false" android:screenOrientation="portrait">
+      </activity>
+      <activity android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity" android:configChanges="keyboardHidden|orientation" android:exported="false" android:windowSoftInputMode="adjustResize">
+      </activity>
+      <activity android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:launchMode="singleTask" android:name="com.sina.weibo.sdk.share.WbShareTransActivity">
+        <intent-filter>
+          <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+          <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+      </activity>
+    </config-file>
+    <framework src="src/android/UMShareWeibo.gradle" custom="true" type="gradleReference" />
+    <resource-file src="src/android/libs/umeng-share-sina-simplify-6.9.2.jar" target="libs/umeng-share-sina-simplify-6.9.2.jar" />
+    <resource-file src="src/android/res/drawable/umeng_socialize_sina.png" target="res/drawable/drawable/umeng_socialize_sina.png" />
+    <source-file src="src/android/UMShareWeibo.java" target-dir="src/news/chen/yu/ionic" />
+  </platform>
+</plugin>
